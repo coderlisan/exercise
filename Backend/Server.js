@@ -1,26 +1,34 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const usersRouter = require('./Routes/Users')
+const userRouter = require('./Router/Users.js')
 const cors = require('cors')
+const { json } = require('express')
 
 require('dotenv').config()
 
 const app = express()
 const port = 5000
 
-app.use(express.json())
-app.use(cors())
-
-mongoose.connect(process.env.URL, { useNewUrlParser: true, useCreateIndex: true })
-
-const connection = mongoose.connection
-
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully")
+app.use('/', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "*")
+  next()
 })
 
-app.use('/users', usersRouter)
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+  preflightContinue: true,
+  credentials: true,
+}))
 
-app.listen(port, (req, res) => {
+app.use(json())
+
+mongoose.connect('mongodb+srv://Lisan123:Lisan123@lisancluster.nag9v4s.mongodb.net/Tracker?retryWrites=true&w=majority').then(() => {
+  console.log('Database is connected')
+}).catch(err => console.log(err))
+
+app.use('/users', userRouter)
+
+app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)
 })

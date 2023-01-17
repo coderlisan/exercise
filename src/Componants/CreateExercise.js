@@ -7,13 +7,14 @@ export default function CreateExercise() {
 
   const postUserData = e => {
     e.preventDefault()
-    const user = { username: userdata }
+    let user = userdata
 
     axios.post('http://localhost:5000/users/add', user).then(res => {
       console.log(res.data)
-    }).catch(err => { console.log(err) })
-
-    setUserdata('')
+      setTimeout(() => {
+        setUserdata('')
+      }, 1000)
+    }).catch(err => { console.log('From axios', err) })
   }
 
   return (
