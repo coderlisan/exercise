@@ -8,7 +8,7 @@ const userRouter = Router()
 userRouter.route('/add').post((req, res) => {
   console.log('Received Data - - - - - - - -', req.body)
 
-  const username = req.body
+  const username = req.body.username
   console.log('It is username - - - ', username)
 
   // const newUser = new User({ username })
