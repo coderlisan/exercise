@@ -15,12 +15,12 @@ userRouter.route('/add').post((req, res) => {
   // newUser.save().then(() => {
   //   res.status(200).json('added')
   // }).catch(err => res.status(400).json('Error' + err))
-  USERSCHEMA.create(username, (err, data)=>{
-    if (err){
-      console.log('Error message', err.message)
-      res.status(400).json({'Error': err})
+  USERSCHEMA.create(username, (error, data)=>{
+    if (error){
+      console.log('Error message', error.message)
+      res.status(400).json({"Error": error})
   } else{
-    res.status(200).json({'Received Data': data})
+    res.status(200).json({"successfully saved in databse": data})
   }
   })
 })
