@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './Componants/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import CreateExercise from './Componants/CreateExercise'
+import CreateUser from './Componants/CreateUser'
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
           <br />
           <Routes>
             {/* <Route path='/' element={<ExerciseList />} /> */}
-            <Route path='/' element={<CreateExercise />} />
+            <Route path='/' element={<CreateUser />} />
             {/* <Route path='/edit/:id' element={<EditExercise />} /> */}
             {/* <Route path='/user' element={<CreateUser />} /> */}
           </Routes>
