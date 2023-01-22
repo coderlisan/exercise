@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 
-export default function CreateExercise() {
+export default function CreateUser() {
   const [userdata, setUserdata] = useState('')
   const handleChange = e => { setUserdata(e.target.value) }
 
